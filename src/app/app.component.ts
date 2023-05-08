@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'portrait-gradient';
+
+  @ViewChild('target', {static: true}) targetElement!: ElementRef;
+
+  scrollToTarget(){
+    const targetElement = this.targetElement.nativeElement;
+    targetElement.scrollIntoView({ behavior: 'smooth'});
+  }
 }
